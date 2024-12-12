@@ -43,7 +43,7 @@ module generate_module
         integer :: i
 
         ! 0) Calculate an array proportional to the volumes
-        probs = RTI%logXpsim(random_integer(settings%nsim),:)              ! prob_p = log( X_p )
+        probs = RTI%logXpsim(:, random_integer(settings%nsim))              ! prob_p = log( X_p )
         probs = probs - logsumexp(probs)  ! prob_p = log( X_p/(sum_q X_q) )
         probs = exp(probs)                ! prob_p = X_p/(sum_q X_q)
 
