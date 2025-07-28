@@ -1,6 +1,7 @@
-# rule for building the c++ wrapper
-$(LIB_DIR)/libCC_likelihood.a: CC_likelihood.o
-	$(AR) $@ $^ 
+# rule for building the c++ wrapper  
+$(LIB_DIR)/libCC_likelihood.a: CC_likelihood.o libderi.a
+	cp libderi.a $@
+	$(AR) $@ CC_likelihood.o
 
 
 # General rule for building object file (.o)  from c++ files (.cpp)

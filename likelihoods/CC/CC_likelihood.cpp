@@ -1,5 +1,6 @@
 # include "CC_likelihood.hpp"
 #include <iostream>
+#include "lcdm.rs.h" 
 
 // This module is where your likelihood code should be placed.
 //
@@ -11,6 +12,7 @@
 //============================================================
 // insert likelihood variables here
 //
+static rust::Box<Likelihood>* likelihood = nullptr;
 //
 //============================================================
 
@@ -51,10 +53,10 @@ double loglikelihood (double theta[], int nDims, double phi[], int nDerived)
     //
     //
     //============================================================
-    for (int i=0;i<nDims;i++)
-        logL += theta[i]*theta[i];
     
-    return logL;
+    double result = logl(**likelihood, theta[0], theta[1]);
+    return result;
+
 
 }
 
@@ -75,8 +77,9 @@ void prior (double cube[], double theta[], int nDims)
     //
     //
     //============================================================
-    for(int i=0;i<nDims;i++)
-        theta[i] = cube[i];
+    // theta[0] = 14600.0 * cube[0] + 3650.0;
+    theta[0] = 99000.0 * cube[0] + 1000.0;
+    theta[1] = 0.98 * cube[1] + 0.01;
 
 }
 
@@ -131,4 +134,10 @@ void setup_loglikelihood()
     //
     //
     //============================================================
+    likelihood = new rust::Box<Likelihood>(
+        create_likelihood(
+            "/Users/adam/phd/jayesian/jayesian/likelihoods/data/desidr2/desidr2_mean.txt",
+            "/Users/adam/phd/jayesian/jayesian/likelihoods/data/desidr2/desidr2_cov.txt"
+        )
+    );
 }
