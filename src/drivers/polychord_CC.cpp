@@ -4,12 +4,12 @@
 int main()
 {
     int nDims, nDerived;
-    nDims = 3;
-    nDerived = 1;
+    nDims = 2;
+    nDerived = 0;
 
     Settings settings(nDims,nDerived);
 
-    settings.nlive         = 50;
+    settings.nlive         = 200;
     settings.num_repeats   = settings.nDims*5;
     settings.do_clustering = false;
 
