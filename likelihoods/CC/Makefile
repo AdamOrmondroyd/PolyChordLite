@@ -1,6 +1,6 @@
 # rule for building the c++ wrapper  
-$(LIB_DIR)/libCC_likelihood.a: CC_likelihood.o libderi.a
-	cp libderi.a $@
+$(LIB_DIR)/libCC_likelihood.a: CC_likelihood.o libresi.a
+	cp libresi.a $@
 	$(AR) $@ CC_likelihood.o
 
 

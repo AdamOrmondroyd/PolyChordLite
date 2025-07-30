@@ -1,6 +1,6 @@
 # include "CC_likelihood.hpp"
 #include <iostream>
-#include "lcdm.rs.h" 
+#include "lib.rs.h" 
 
 // This module is where your likelihood code should be placed.
 //
