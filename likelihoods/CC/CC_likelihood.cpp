@@ -136,8 +136,8 @@ void setup_loglikelihood()
     //============================================================
     likelihood = new rust::Box<Likelihood>(
         create_likelihood(
-            "/Users/adam/phd/jayesian/jayesian/likelihoods/data/desidr2/desidr2_mean.txt",
-            "/Users/adam/phd/jayesian/jayesian/likelihoods/data/desidr2/desidr2_cov.txt"
+            "/Users/adam/phd/jesi/jesi/likelihoods/data/desidr2/desidr2_mean.txt",
+            "/Users/adam/phd/jesi/jesi/likelihoods/data/desidr2/desidr2_cov.txt"
         )
     );
 }
