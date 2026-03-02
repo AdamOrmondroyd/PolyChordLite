@@ -1,3 +1,68 @@
 [build-system]
-requires = ["setuptools", "wheel", "numpy"]
+requires = ["setuptools>=61.0", "wheel", "numpy"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "pypolychord"
+dynamic = ["version"]
+description = "Python interface to PolyChord, a tool for nested sampling and Bayesian inference"
+readme = "README.rst"
+license = "LicenseRef-PolyChord"
+license-files = ["LICENCE"]
+requires-python = ">=3.8"
+authors = [
+    {name = "Will Handley", email = "wh260@cam.ac.uk"}
+]
+maintainers = [
+    {name = "Will Handley", email = "wh260@cam.ac.uk"}
+]
+keywords = [
+    "nested-sampling",
+    "bayesian-inference",
+    "polychord",
+    "mcmc",
+    "cosmology",
+    "parameter-estimation",
+    "model-comparison"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Fortran",
+    "Programming Language :: C++",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Astronomy",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+dependencies = [
+    "numpy",
+    "scipy",
+]
+
+[project.optional-dependencies]
+plotting = ["getdist"]
+
+[project.urls]
+Homepage = "https://github.com/PolyChord/PolyChordLite"
+Documentation = "https://polychord.io"
+Repository = "https://github.com/PolyChord/PolyChordLite"
+Issues = "https://github.com/PolyChord/PolyChordLite/issues"
+
+[tool.setuptools]
+packages = ["pypolychord"]
+include-package-data = true
+zip-safe = false
+
+[tool.setuptools.package-data]
+pypolychord = ["lib/libchord.so"]
+
+[tool.setuptools.dynamic]
+version = {attr = "pypolychord.__version__"}
