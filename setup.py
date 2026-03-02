@@ -78,6 +78,12 @@ class CustomBuildExt(_build_ext):
         self._build_libchord()
         # Then build the Python extension
         super().run()
+        # Copy libchord.so into the build directory so it gets included in the wheel
+        BASE_PATH = os.path.dirname(os.path.abspath(__file__))
+        lib_src = os.path.join(BASE_PATH, "pypolychord", "lib", "libchord.so")
+        lib_dest = os.path.join(self.build_lib, "pypolychord", "lib")
+        os.makedirs(lib_dest, exist_ok=True)
+        shutil.copy(lib_src, lib_dest)
 
     def _build_libchord(self):
         """Run make to build libchord.so from Fortran/C++ sources."""
